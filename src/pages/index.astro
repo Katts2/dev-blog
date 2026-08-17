@@ -1,0 +1,116 @@
+---
+const posts = [
+  {
+    title: 'Always Free 게임 시스템 프로젝트 시작',
+    description: '보스타이머 → 아이템 경매 → 정산 시스템을 무료 인프라 중심으로 구축하기 시작했습니다.',
+    date: '2026-08-17',
+    href: '/blog/001-project-start/'
+  }
+];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="클라우드와 웹 개발을 배우며 프로젝트 진행 과정을 기록하는 개발 블로그" />
+    <title>Dev Blog</title>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <p class="eyebrow">BEGINNER DEV LOG</p>
+        <h1>개발하면서 배우고,<br />배운 것을 기록합니다.</h1>
+        <p>
+          Always Free / Free Tier 인프라를 활용해 보스타이머, 아이템 경매,
+          정산 시스템을 만드는 과정을 기록합니다.
+        </p>
+      </section>
+
+      <section>
+        <h2>최근 글</h2>
+        <div class="posts">
+          {posts.map((post) => (
+            <a class="post" href={post.href}>
+              <span>{post.date}</span>
+              <h3>{post.title}</h3>
+              <p>{post.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(:root) {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #202124;
+    background: #f7f7f8;
+  }
+
+  :global(body) {
+    margin: 0;
+  }
+
+  main {
+    width: min(980px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 72px 0;
+  }
+
+  .hero {
+    padding: 48px 0 72px;
+  }
+
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+  }
+
+  h1 {
+    margin: 12px 0 20px;
+    font-size: clamp(2.4rem, 7vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .hero > p:last-child {
+    max-width: 680px;
+    color: #5f6368;
+    font-size: 1.08rem;
+    line-height: 1.8;
+  }
+
+  .posts {
+    display: grid;
+    gap: 16px;
+  }
+
+  .post {
+    display: block;
+    padding: 24px;
+    color: inherit;
+    background: white;
+    border-radius: 16px;
+    text-decoration: none;
+  }
+
+  .post span,
+  .post p {
+    color: #6b7280;
+  }
+
+  .post h3 {
+    margin: 8px 0;
+    font-size: 1.35rem;
+  }
+
+  .post p {
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+</style>
