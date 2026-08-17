@@ -4,6 +4,11 @@ Cloud / Web 개발을 배우면서 프로젝트 진행 과정을 기록하는 �
 
 현재 주 프로젝트는 **보스타이머 → 아이템 경매 → 정산 시스템**이며, 가능한 한 Always Free / Free Tier 인프라를 활용해 직접 구축하는 과정을 기록합니다.
 
+## 운영 주소
+
+- Custom domain: `https://blog.mongku.org`
+- Cloudflare Pages: `https://dev-blog-5jp.pages.dev`
+
 ## 기술 스택
 
 - Astro
@@ -52,7 +57,7 @@ src/pages/blog/
 
 ```text
 src/pages/blog/001-project-start.md
-src/pages/blog/002-github-setup.md
+src/pages/blog/002-github-cloudflare-blog.md
 src/pages/blog/003-oci-setup.md
 ```
 
@@ -74,7 +79,9 @@ date: "2026-08-17"
 - [x] 첫 화면 생성
 - [x] 블로그 글 레이아웃 생성
 - [x] 첫 개발 글 작성
-- [ ] Cloudflare Pages 연결
-- [ ] `*.pages.dev` 배포 확인
-- [ ] 개인 도메인 `blog.<domain>` 연결
+- [x] Cloudflare Pages 연결
+- [x] `dev-blog-5jp.pages.dev` 배포
+- [x] `blog.mongku.org` 커스텀 도메인 연결
+- [x] SSL 활성화
+- [x] 두 번째 개발 글 작성
 - [ ] Reddit 기록 방식 준비
