@@ -1,0 +1,164 @@
+---
+import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+
+const allPosts = Object.values(
+  import.meta.glob('./*.md', { eager: true })
+) as any[];
+
+const posts = allPosts
+  .map((post) => ({
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    date: post.frontmatter.date,
+    url: post.url
+  }))
+  .sort((a, b) => {
+    const dateDiff =
+      new Date(b.date).getTime() - new Date(a.date).getTime();
+
+    if (dateDiff !== 0) {
+      return dateDiff;
+    }
+
+    return b.url.localeCompare(a.url);
+  });
+
+const years = [...new Set(
+  posts.map((post) =>
+    new Date(post.date).getFullYear()
+  )
+)];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="MONGKU.DEV 개발 블로그"
+    />
+    <title>Blog | MONGKU.DEV</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <h1>Blog</h1>
+
+      {years.map((year) => (
+        <section class="year-group">
+          <h2>{year}</h2>
+
+          <div class="posts">
+            {posts
+              .filter(
+                (post) =>
+                  new Date(post.date).getFullYear() === year
+              )
+              .map((post) => (
+                <a class="post" href={post.url}>
+                  <div class="post-text">
+                    <h3>{post.title}</h3>
+
+                    {post.description && (
+                      <p>{post.description}</p>
+                    )}
+                  </div>
+
+                  <span class="arrow">›</span>
+                </a>
+              ))}
+          </div>
+        </section>
+      ))}
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    width: min(720px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 56px 0 80px;
+  }
+
+  h1 {
+    margin: 0 0 48px;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .year-group {
+    margin-bottom: 40px;
+  }
+
+  .year-group h2 {
+    margin: 0 0 16px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .post {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 16px;
+
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+  }
+
+  .post:hover {
+    background: var(--surface);
+  }
+
+  .post-text {
+    min-width: 0;
+  }
+
+  .post h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .post p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .arrow {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      padding: 40px 0 56px;
+    }
+
+    h1 {
+      margin-bottom: 36px;
+    }
+  }
+</style>
