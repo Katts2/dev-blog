@@ -1,0 +1,82 @@
+---
+import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="MONGKU.DEV 소개"
+    />
+    <title>About | MONGKU.DEV</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <h1>About</h1>
+
+      <div class="about">
+        <p>
+          안녕하세요. Mongku입니다.
+        </p>
+
+        <p>
+          개발하면서 배우는 내용을 기록하고,
+          직접 서비스를 만들어가는 과정을 정리하고 있습니다.
+        </p>
+
+        <p>
+          현재 Boss Timer → Item Auction → Settlement System 순서로
+          프로젝트를 만들어가고 있습니다.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    width: min(720px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 56px 0 80px;
+  }
+
+  h1 {
+    margin: 0 0 48px;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .about {
+    max-width: 620px;
+  }
+
+  .about p {
+    margin: 0 0 20px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .about p:first-child {
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      padding: 40px 0 56px;
+    }
+
+    h1 {
+      margin-bottom: 36px;
+    }
+  }
+</style>

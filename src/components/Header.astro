@@ -1,0 +1,98 @@
+---
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="brand" href="/">Mongku.dev</a>
+
+  <nav class="main-nav">
+    <a class={pathname === '/' ? 'active' : ''} href="/">
+      Home
+    </a>
+
+    <a class={pathname.startsWith('/blog') ? 'active' : ''} href="/blog/">
+      Blog
+    </a>
+
+    <a
+      class={pathname.startsWith('/projects') ? 'active' : ''}
+      href="/projects/"
+    >
+      Projects
+    </a>
+
+    <a class={pathname.startsWith('/about') ? 'active' : ''} href="/about/">
+      About
+    </a>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: min(720px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 18px 0 8px;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: inline-block;
+    color: var(--text);
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+  }
+
+  .main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .main-nav a {
+    padding: 8px 10px;
+    color: var(--text-muted);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .main-nav a:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+
+  .main-nav a.active {
+    color: var(--text);
+    background: var(--surface);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .site-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px 0;
+    }
+
+    .main-nav {
+      justify-content: flex-start;
+      width: 100%;
+    }
+
+    .main-nav a {
+      padding: 7px 9px;
+      font-size: 0.9rem;
+    }
+  }
+</style>

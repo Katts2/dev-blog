@@ -1,0 +1,126 @@
+---
+import '../../styles/global.css';
+import Header from '../../components/Header.astro';
+
+const projects = [
+  {
+    title: 'Boss Timer',
+    description: '보스 출현 시간을 기록하고 관리하는 보스타이머 시스템입니다.',
+    href: '#'
+  },
+  {
+    title: 'Item Auction',
+    description: '아이템 경매를 쉽고 투명하게 진행하기 위한 시스템입니다.',
+    href: '#'
+  },
+  {
+    title: 'Settlement',
+    description: '경매 결과를 바탕으로 분배와 정산을 처리하는 시스템입니다.',
+    href: '#'
+  }
+];
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="MONGKU.DEV 프로젝트 목록"
+    />
+    <title>Projects | MONGKU.DEV</title>
+  </head>
+
+  <body>
+    <Header />
+
+    <main>
+      <h1>Projects</h1>
+
+      <div class="projects">
+        {projects.map((project) => (
+          <a class="project" href={project.href}>
+            <div>
+              <h2>{project.title}</h2>
+              <p>{project.description}</p>
+            </div>
+
+            <span>›</span>
+          </a>
+        ))}
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    width: min(720px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 56px 0 80px;
+  }
+
+  h1 {
+    margin: 0 0 48px;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 16px;
+
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+  }
+
+  .project:hover {
+    background: var(--surface);
+  }
+
+  .project h2 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .project p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .project span {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      padding: 40px 0 56px;
+    }
+
+    h1 {
+      margin-bottom: 36px;
+    }
+  }
+</style>
