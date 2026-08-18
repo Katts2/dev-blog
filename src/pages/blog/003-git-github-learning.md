@@ -4,7 +4,8 @@ layout: ../../layouts/BlogPost.astro
 title: "Git · GitHub 학습 정리 — Commit부터 Branch, Merge, 복구까지"
 description: "Git과 GitHub의 기본 개념부터 Commit, Branch, Merge, Pull Request, 충돌 해결, 복구, Stash, Secret 관리와 Tag까지 정리합니다."
 date: "2026-08-18"
-------------------
+
+---
 
 # Git · GitHub 학습 정리
 
